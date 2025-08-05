@@ -3,6 +3,8 @@
 import Sidebar from "../components/Sidebar";
 import GridWrapper from "../components/GridWrapper";
 import BentoCard from "../components/BentoCard";
+import LocationBar from "components/homepage-divs/locationbar";
+import Greeting from "components/homepage-divs/greeting";
 
 export default function Home() {
   const gridAreas = [
@@ -22,6 +24,8 @@ export default function Home() {
   // 👇 1st row = 50px, others = 1fr (expand to fit)
   columns={4}
   rows="50px 1fr 1fr">
+          <Greeting title="Welcome, Boss" style={{gridArea:"greeting"}} /> 
+          <LocationBar title="Location" style={{gridArea:"location"}} />
           <BentoCard title="Your Picture" style={{ gridArea: "picture" }} />
           <BentoCard title="Weight Tracker" style={{ gridArea: "weight" }} />
           <BentoCard title="Macros" style={{ gridArea: "macro" }} />
