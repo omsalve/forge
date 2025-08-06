@@ -1,76 +1,73 @@
-"use client";
+'use client';
 
-import Sidebar from "../components/Sidebar";
-import GridWrapper from "../components/GridWrapper";
-import BentoCard from "../components/BentoCard";
-import LocationBar from "components/homepage-divs/locationbar";
-import Greeting from "components/homepage-divs/greeting";
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from './lib/useAuth';
+import { Heading1 } from 'lucide-react';
 
-export default function Home() {
-  const homeGrid = [
-    "greeting greeting location location",
-    "picture weight macro calorie",
-    "picture water chatbot chatbot"
-  ];
+export default function LandingPage() {
+  const { user } = useAuth();
+  const router = useRouter();
 
-  const workoutGrid = [
-    "today smallTop bigBox bigBox",
-    "today smallBottom bigBox bigBox"
-  ];
+  useEffect(() => {
+    if (user) {
+      router.push('/dashboard');
+    }
+  }, [user]);
 
-  const dietGrid = [
-    "today mealLog chatBot chatBot",
-    "today mealLog chatBot chatBot",
-    "today smallBottom chatBot chatBot"
-  ];
-
-  return (
-    <div className="flex flex-col text-white min-h-screen overflow-y-auto">
-      
-      {/* Top Section - Homepage */}
-      <div className="flex">
-        <Sidebar />
-        <main className="flex-1 ml-20 p-6 min-h-screen">
-          <GridWrapper templateAreas={homeGrid} columns={4} rows="50px 1fr 1fr">
-            <Greeting title="Welcome, Boss" style={{ gridArea: "greeting" }} />
-            <LocationBar title="Location" style={{ gridArea: "location" }} />
-            <BentoCard title="Your Picture" style={{ gridArea: "picture" }} />
-            <BentoCard title="Weight Tracker" style={{ gridArea: "weight" }} />
-            <BentoCard title="Macros" style={{ gridArea: "macro" }} />
-            <BentoCard title="Calories" style={{ gridArea: "calorie" }} />
-            <BentoCard title="Water Intake" style={{ gridArea: "water" }} />
-            <BentoCard title="Ghostface Chat" style={{ gridArea: "chatbot" }} />
-          </GridWrapper>
-        </main>
-      </div>
-
-      {/* Bottom Section - Workout */}
-      <section id="workout">
-        <div className="flex">
-          <main className="flex-1 ml-20 p-6 min-h-screen">
-            <GridWrapper templateAreas={workoutGrid} columns={3} rows="1fr 1fr">
-              <BentoCard title="Today’s Workout" style={{ gridArea: "today" }} />
-              <BentoCard title="Top Small Box" style={{ gridArea: "smallTop" }} />
-              <BentoCard title="Bottom Small Box" style={{ gridArea: "smallBottom" }} />
-              <BentoCard title="Big Workout Box" style={{ gridArea: "bigBox" }} />
-            </GridWrapper>
-          </main>
-        </div>
+   return (
+    <main className="bg-black text-white min-h-screen snap-y snap-mandatory overflow-scroll">
+      {/* Hero */}
+      <section className="flex flex-col justify-center items-center text-center h-screen px-6">
+        <h1 className="text-5xl font-bold mb-4">FORGE.</h1>
+        <p className="text-gray-400 mb-1">Built for those who don’t skip.</p>
+        <p className="text-gray-400 mb-1">Log workouts. Post progress. Level up with AI.</p>
+        <p className="text-gray-400 mb-6">Built for lifters, by a lifter.</p>
+        <h2 className="text-2xl font-semibold mb-6">Track. Train. Transform.</h2>
+        
+          <button className="bg-[#5e2b2b] text-white py-2 px-6 rounded-md hover:bg-[#7e3f3f] transition">
+            Join The Grind
+          </button>
+        
       </section>
 
-      {/* Third Section - Another Workout Layout */}
-      <section id="another">
-        <div className="flex">
-          <main className="flex-1 ml-20 p-6 min-h-screen">
-            <GridWrapper templateAreas={dietGrid} columns={4} rows="50px 1fr 1fr">
-              <BentoCard title="Today's Meals" style={{ gridArea: "today" }} />
-              <BentoCard title="Meal Log" style={{ gridArea: "mealLog" }} />
-              <BentoCard title="Another Bottom Small" style={{ gridArea: "smallBottom" }} />
-              <BentoCard title="AI Suggested Meals" style={{ gridArea: "chatBot" }} />
-            </GridWrapper>
-          </main>
-        </div>
+      {/* Gamify Section */}
+      <section className="py-24 px-6 text-center min-h-screen">
+        <h2 className="text-3xl font-bold mb-6">Gamify your gym life</h2>
+        <ul className="text-left max-w-xl mx-auto space-y-2 text-gray-300">
+          <li>• GitHub-style daily heatmap grid</li>
+          <li>• Streak system (“7 days strong = 🔥 Beast Mode”)</li>
+          <li>• Progress rings, stats dashboard</li>
+          <li>• Every log = XP</li>
+          <li>• Level bar, your current rank (e.g. “Rest Rookie” → “Iron Savage”)</li>
+          <li>• Badges: “First PR”, “No Days Off”, “Meal Master”</li>
+        </ul>
       </section>
-    </div>
+
+      {/* Save Splits & Meals */}
+      <section className="py-24 px-6 text-center min-h-screen">
+        <h2 className="text-3xl font-bold mb-6">Save your splits & Meals</h2>
+        <ul className="text-left max-w-xl mx-auto space-y-2 text-gray-300">
+          <li>• Create your own split, save workouts</li>
+          <li>• Log food, repeat meals</li>
+          <li>• Build your own templates over time</li>
+        </ul>
+      </section>
+
+      {/* AI Trainer */}
+      <section className="py-24 px-6 text-center min-h-screen">
+        <h2 className="text-3xl font-bold mb-4">The AI Trainer (Ghostface)</h2>
+        <p className="max-w-xl mx-auto text-gray-300 mb-6">
+          The AI Trainer doesn’t just track your sets — it learns from your grind.
+          Whether you’re bulking, cutting, or maintaining, it adapts to your performance and goals.
+        </p>
+        <ul className="text-left max-w-xl mx-auto space-y-2 text-gray-300 min-h-screen">
+          <li>• Auto-adjusted Plans: Smarter plans based on history + performance</li>
+          <li>• Intelligent Diet Logs: Macros, suggestions, improvement tips</li>
+          <li>• Recovery Monitoring: Warns when you're overtraining</li>
+          <li>• Consistency Reports: Weekly breakdowns of effort and slack</li>
+        </ul>
+      </section>
+    </main>
   );
 }
