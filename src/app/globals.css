@@ -20,9 +20,18 @@
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+
+  background-color: var(--background);
+
+  background-image:
+    radial-gradient(var(--dot-color, #444) 1px, transparent 0), /* dots */
+    radial-gradient(ellipse at center, rgba(0,0,0,1) 100%, rgba(0,0,0,1) 100%); /* vignette */
+
+  background-size: 30px 30px, cover;
+  background-position: 0 0, center;
+  background-repeat: repeat, no-repeat;
 }
 @tailwind base;
 @tailwind components;
@@ -35,4 +44,51 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+
+  background-color: var(--background);
+
+  background-image:
+    radial-gradient(var(--dot-color, #444) 1px, transparent 0), /* dotted grid */
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 100%); /* vignette */
+
+  background-size: 20px 20px, cover;
+  background-repeat: repeat, no-repeat;
+  background-position: 0 0, center;
+}
+
+.shimmer-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 20px
+  );
+
+  animation: shimmerMove 8s linear infinite;
+  background-size: 200% 200%;
+  mix-blend-mode: screen;
+  opacity: 0.2;
+}
+
+@keyframes shimmerMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }

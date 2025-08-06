@@ -2,7 +2,7 @@ export default function BentoCard({ title, description, icon, onClick, className
   return (
     <div
       onClick={onClick}
-      className={`m-4 rounded-2xl border border-white/10 bg-white/5 p-5 min-h-[200px] backdrop-blur-md shadow-md flex flex-col justify-between ${className}`}
+      className={`m-4 rounded-2xl bg-white/5 p-5 min-h-[200px] flex flex-col justify-between ${className}`}
       style={style}
     >
       <div className="flex items-center gap-3">

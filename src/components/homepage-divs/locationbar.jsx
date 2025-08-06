@@ -2,7 +2,7 @@ export default function LocationBar({ title, description, icon, onClick, classNa
   return (
     <div
       onClick={onClick}
-      className={`m-2 rounded-2xl border border-white/10 bg-white/5 p-5 max-h-[10px] backdrop-blur-md shadow-md flex flex-col justify-center ${className}`}
+      className={`m-2 rounded-2xl bg-white/5 p-5 max-h-[10px] backdrop-blur-md shadow-md flex flex-col justify-center ${className}`}
       style={style}
     >
       <div className="flex items-center gap-3">

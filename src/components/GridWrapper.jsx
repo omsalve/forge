@@ -19,7 +19,7 @@ export default function GridWrapper({
   return (
     <div
       style={style}
-      className={` grid gap-1/16 min-h-500px rounded-2xl bg-white/5 backdrop-blur-md mt-20 mb-20 ml-5 mr-20 overflow-hidden no-scrollbar ${className}`}
+      className={` grid gap-1/16 min-h-500px rounded-2xl bg-grey backdrop-blur-md mt-20 mb-20 ml-5 mr-20 overflow-hidden no-scrollbar ${className}`}
     >
       {children}
     </div>

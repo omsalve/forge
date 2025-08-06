@@ -6,7 +6,7 @@ import { Home, Dumbbell, Bot, Settings } from "lucide-react";
 
 const navItems = [
   { href: "/", icon: Home, label: "Home" },
-  { href: "/workout", icon: Dumbbell, label: "Workout" },
+  { href: "#workout", icon: Dumbbell, label: "Workout" },
   { href: "/ai", icon: Bot, label: "Ghost AI" },
   { href: "/settings", icon: Settings, label: "Settings" },
 ];
