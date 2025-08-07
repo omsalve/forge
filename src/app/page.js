@@ -1,13 +1,16 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from './lib/useAuth';
-import { Heading1 } from 'lucide-react';
+import DumbbellScene from 'components/DumbbellScene';
+import { motion, AnimatePresence } from 'framer-motion';
+import LoginForm from "../components/LoginForm";
 
 export default function LandingPage() {
   const { user } = useAuth();
   const router = useRouter();
+  const [showLogin, setShowLogin] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -15,21 +18,98 @@ export default function LandingPage() {
     }
   }, [user]);
 
-   return (
+  return (
     <main className="bg-black text-white min-h-screen snap-y snap-mandatory overflow-scroll">
       {/* Hero */}
-      <section className="flex flex-col justify-center items-center text-center h-screen px-6">
-        <h1 className="text-5xl font-bold mb-4">FORGE.</h1>
-        <p className="text-gray-400 mb-1">Built for those who don’t skip.</p>
-        <p className="text-gray-400 mb-1">Log workouts. Post progress. Level up with AI.</p>
-        <p className="text-gray-400 mb-6">Built for lifters, by a lifter.</p>
-        <h2 className="text-2xl font-semibold mb-6">Track. Train. Transform.</h2>
-        
-          <button className="bg-[#5e2b2b] text-white py-2 px-6 rounded-md hover:bg-[#7e3f3f] transition">
-            Join The Grind
-          </button>
-        
-      </section>
+      <section className="flex flex-col justify-center items-center text-center h-screen px-10 relative">
+  {/* Dumbbell animation */}
+  <AnimatePresence>
+    {!showLogin && (
+      <motion.div
+        className="absolute top-10"
+        initial={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -100 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+      >
+        <DumbbellScene />
+      </motion.div>
+    )}
+  </AnimatePresence>
+
+  {/* Title + Taglines */}
+  <motion.h1
+    className="text-5xl font-base font-bold mb-4 mt-40"
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.2 }}
+  >
+    FORGE.
+  </motion.h1>
+  <motion.p
+    className="text-gray-400 mb-1"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.3 }}
+  >
+    Built for those who don’t skip.
+  </motion.p>
+  <motion.p
+    className="text-gray-400 mb-1"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.35 }}
+  >
+    Log workouts. Post progress. Level up with AI.
+  </motion.p>
+  <motion.p
+    className="text-gray-400 mb-6"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.4 }}
+  >
+    Built for lifters, by a lifter.
+  </motion.p>
+  <motion.h2
+    className="text-2xl font-semibold mb-6"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.45 }}
+  >
+    Track. Train. Transform.
+  </motion.h2>
+
+  {/* Login button or form */}
+  <div className="w-full max-w-sm">
+    <AnimatePresence mode="wait">
+      {!showLogin ? (
+        <motion.button
+          key="join-btn"
+          onClick={() => setShowLogin(true)}
+          className="bg-[#5e2b2b] text-white py-2 px-6 rounded-md hover:bg-[#7e3f3f] transition-all duration-300 ease-in-out"
+          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9, y: -10 }}
+          transition={{ duration: 0.4 }}
+        >
+          Join The Grind
+        </motion.button>
+      ) : (
+        <motion.div
+          key="login-form"
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9, y: -10 }}
+          transition={{ duration: 0.5 }}
+        >
+          <LoginForm
+            onClose={() => setShowLogin(false)}
+            onSuccess={() => router.push('/dashboard')}
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </div>
+</section>
 
       {/* Gamify Section */}
       <section className="py-24 px-6 text-center min-h-screen">

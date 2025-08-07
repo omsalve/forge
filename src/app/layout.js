@@ -1,15 +1,16 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+import './globals.css';
+import { Saira_Condensed } from 'next/font/google';
+
+const saira = Saira_Condensed({
+  subsets: ['latin'],
+  weight: '600',
+  variable: '--font-saira'
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+
+ 
+
 
 export const metadata = {
   title: "Gym Tracker App",
@@ -17,12 +18,10 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="antialiased bg-black text-white">
-        {children}
-      </body>
+     return (
+    <html lang="en" className={saira.className}>
+      <body>{children}</body>
     </html>
   );
+  
 }
-

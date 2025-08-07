@@ -1,5 +1,3 @@
-// tailwind.config.js
-
 export default {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
@@ -7,6 +5,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        base: ['"Base Neue"', 'sans-serif'],
+      },
       colors: {
         glass: 'rgba(255,255,255,0.05)',
       },

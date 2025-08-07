@@ -1,10 +1,11 @@
 "use client";
 
-import Sidebar from "../components/Sidebar";
-import GridWrapper from "../components/GridWrapper";
-import BentoCard from "../components/BentoCard";
-import LocationBar from "components/homepage-divs/locationbar";
-import Greeting from "components/homepage-divs/greeting";
+
+import Sidebar from "../../components/Sidebar";
+import GridWrapper from "../../components/GridWrapper";
+import BentoCard from "../../components/BentoCard";
+import LocationBar from "../../components/homepage-divs/locationbar";
+import Greeting from "../../components/homepage-divs/greeting";
 
 export default function Home() {
   const homeGrid = [
