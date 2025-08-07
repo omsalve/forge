@@ -2,7 +2,7 @@ export default function Greeting({ title, description, icon, onClick, className 
   return (
     <div
       onClick={onClick}
-      className={`m-4 rounded-2xl p-5 max-h-[50px] shadow-md flex flex-col justify-center ${className}`}
+      className={`m-4 rounded-2xl p-5 max-h-[50px]  flex flex-col justify-center ${className}`}
       style={style}
     >   
       <div className="flex items-center gap-3">

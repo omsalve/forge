@@ -1,16 +1,13 @@
-
+import Head from 'next/head';
 import './globals.css';
-import { Saira_Condensed } from 'next/font/google';
+import { Bebas_Neue } from 'next/font/google';
 
-const saira = Saira_Condensed({
+const bebas = Bebas_Neue({
   subsets: ['latin'],
-  weight: '600',
-  variable: '--font-saira'
+  weight: '400', // Bebas Neue only comes in 400
+  variable: '--font-bebas',
+  display: 'swap',
 });
-
-
- 
-
 
 export const metadata = {
   title: "Gym Tracker App",
@@ -18,10 +15,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-     return (
-    <html lang="en" className={saira.className}>
+  return (
+    <html lang="en" className={`${bebas.variable}`}>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200&display=swap" rel="stylesheet"
+        />
+      </Head>
       <body>{children}</body>
     </html>
-  );
-  
+  );  
 }

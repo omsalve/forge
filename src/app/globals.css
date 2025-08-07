@@ -1,5 +1,69 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('/fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Base Neue Expanded';
+  src: url('/fonts/BaseNeue-ExpandedBlackOblique.woff') format('woff');
+  font-weight: 900;
+  font-style: oblique;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Base Neue Condensed';
+  src: url('/fonts/BaseNeue-SuperCondSemBd.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Base Neue Super Expanded';
+  src: url('/fonts/BaseNeue-SuperExpBlackObliq.woff') format('woff');
+  font-weight: 900;
+  font-style: oblique;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+h2 {
+  font-family: 'Bebas Neue';
+  src: url('/fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+em {
+  color: red;
+  font-family: 'Bebas Neue';
+  src: url('/fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -8,7 +72,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: "Base Neue", sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
@@ -20,48 +84,30 @@
 }
 
 body {
+  position: relative;
+  overflow-x: hidden;
+
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Base Neue", Arial, Helvetica, sans-serif;
 
   background-color: var(--background);
 
   background-image:
-    radial-gradient(var(--dot-color, #444) 1px, transparent 0), /* dots */
-    radial-gradient(ellipse at center, rgba(0,0,0,1) 100%, rgba(0,0,0,1) 100%); /* vignette */
-
-  background-size: 30px 30px, cover;
-  background-position: 0 0, center;
+    radial-gradient(var(--dot-color, #444) 1px, transparent 0),
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 100%);
+  
+  background-size: 20px 20px, cover;
   background-repeat: repeat, no-repeat;
+  background-position: 0 0, center;
 }
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 /* Hide scrollbar but allow scroll */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
-}
-
-body {
-  position: relative;
-  overflow-x: hidden;
-
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-
-  background-color: var(--background);
-
-  background-image:
-    radial-gradient(var(--dot-color, #444) 1px, transparent 0), /* dotted grid */
-    radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 100%); /* vignette */
-
-  background-size: 20px 20px, cover;
-  background-repeat: repeat, no-repeat;
-  background-position: 0 0, center;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .shimmer-grid {
@@ -92,6 +138,7 @@ body {
     background-position: 100% 100%;
   }
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

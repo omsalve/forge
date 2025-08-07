@@ -6,6 +6,7 @@ import GridWrapper from "../../components/GridWrapper";
 import BentoCard from "../../components/BentoCard";
 import LocationBar from "../../components/homepage-divs/locationbar";
 import Greeting from "../../components/homepage-divs/greeting";
+import Image from "next/image";
 
 export default function Home() {
   const homeGrid = [
@@ -33,9 +34,9 @@ export default function Home() {
         <Sidebar />
         <main className="flex-1 ml-20 p-6 min-h-screen">
           <GridWrapper templateAreas={homeGrid} columns={4} rows="50px 1fr 1fr">
-            <Greeting title="Welcome, Boss" style={{ gridArea: "greeting" }} />
-            <LocationBar title="Location" style={{ gridArea: "location" }} />
-            <BentoCard title="Your Picture" style={{ gridArea: "picture" }} />
+            <Greeting title="Welcome, Boss" className="font-heading" style={{ gridArea: "greeting", fontFamily: 'Base Neue Expanded' }}  />
+            <LocationBar title="Location" style={{ gridArea: "location", }} />
+           <BentoCard title="Your Picture" style={{ gridArea: "picture" }} />
             <BentoCard title="Weight Tracker" style={{ gridArea: "weight" }} />
             <BentoCard title="Macros" style={{ gridArea: "macro" }} />
             <BentoCard title="Calories" style={{ gridArea: "calorie" }} />
